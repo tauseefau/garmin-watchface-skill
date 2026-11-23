@@ -1,25 +1,37 @@
 ---
 name: garmin-watchface
-description: Design, build, preview and sideload Garmin Connect IQ watch faces (digital or analog) for any Connect IQ watch. Use when the user wants a custom Garmin watch face, wants to change one, preview it in the simulator, or install it on their watch over USB.
+description: Design, build, preview and sideload Garmin Connect IQ watch faces (digital or analog) for any Connect IQ watch. Starts with a one-question-at-a-time requirements interview (grill-me style) and a brief the user approves. Use when the user wants a custom Garmin watch face, wants to change one, preview it in the simulator, or install it on their watch over USB.
 ---
 
 # Garmin watch face
 
 Build a Connect IQ watch face in Monkey C, check it in the simulator after every visual change,
-then sideload it over USB. Scripts are in `scripts/`, a working starter face is in `template/`,
+then sideload it over USB. It starts with a grill-me interview so the face matches what the user
+wants before any code is written. Scripts are in `scripts/`, a working starter face is in `template/`,
 and the source repo's `examples/prayer-watchface` is a complete two-face project (digital +
 analog) to copy patterns from.
 
 Read `references/gotchas.md` before writing code. Every item in it cost real debugging time.
 
-## 1. Find out what is being built
+## 0. Check the toolchain
 
-Ask only what you cannot default:
-- **Which watch?** Get the Connect IQ device id (e.g. `fr55`, `fenix7`, `venu3`). List installed
-  profiles with `scripts/device_info.py --list`. If the watch is missing, the user must download
-  it in the Connect IQ SDK Manager.
-- **Digital or analog**, and what data on the face (date, steps, heart rate, battery, sunrise...).
-- **Settings** the wearer should change on the watch (colours, units, options).
+```
+scripts/doctor.sh [device-id]
+```
+Fix anything marked MISSING with the user before going further (see the README's prerequisites).
+
+## 1. Grill the user, then write a brief
+
+Interview the user before writing any code, following `references/interview.md` (a
+"grill-me" interview). Ask one question at a time and give your recommended answer with each.
+Find out what you can yourself, follow only the branches that apply, and push back when it
+won't fit on the screen.
+
+The interview covers: the watch model, style (digital/analog), what to read at a glance, ranked
+data fields, colours, time format, on-watch settings, language, name, and how to install it.
+
+End with `<face-dir>/BRIEF.md` (create the folder; `new_face.sh` fills it in later) and an explicit "yes, build it" from the user. If they
+say "just build it", fill the gaps with your recommendations and list them in the brief.
 
 ## 2. Read the device limits
 
@@ -30,6 +42,8 @@ Prints the resolution, round or rectangular shape, colour depth (MIP or AMOLED),
 sizes, memory limit and API level. Design for these numbers, not for a phone screen.
 
 ## 3. Start from the template
+
+After the brief is approved:
 
 ```
 scripts/new_face.sh <dir> "<Face Name>" <device-id> [more device ids]
@@ -77,4 +91,5 @@ Watch Face > pick the face.
 ## References
 
 - `references/devices.md`: compatibility, display types, memory, sideloading by model.
+- `references/interview.md`: the grill-me question tree and the brief template.
 - `references/gotchas.md`: problems already solved: simulator, fonts, Arabic text, settings, jungle files.

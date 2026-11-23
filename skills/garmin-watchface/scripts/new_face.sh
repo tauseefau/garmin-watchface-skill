@@ -3,8 +3,9 @@
 # Gives it a fresh app id, its name and the target devices, then you build it with build.sh.
 set -euo pipefail
 DIR="${1:?target dir}"; NAME="${2:?face name}"; shift 2; [ $# -gt 0 ] || { echo "need at least one device id" >&2; exit 1; }
-[ -e "$DIR" ] && { echo "$DIR already exists" >&2; exit 1; }
-cp -r "$(dirname "$0")/../template" "$DIR"
+# the folder may already exist holding only the interview's BRIEF.md
+if [ -e "$DIR" ] && [ -n "$(ls -A "$DIR" | grep -vx BRIEF.md)" ]; then echo "$DIR already has files" >&2; exit 1; fi
+mkdir -p "$DIR" && cp -r "$(dirname "$0")/../template/." "$DIR/"
 ID=$(python3 -c 'import uuid; print(uuid.uuid4())')
 PRODUCTS=$(for d in "$@"; do printf '            <iq:product id="%s"/>\n' "$d"; done)
 python3 - "$DIR" "$ID" "$NAME" "$PRODUCTS" <<'PY'

@@ -9,10 +9,25 @@ Works with **Claude Code, OpenCode, Hermes Agent, Codex** and any agent that can
 ![Starter face](docs/images/template-face.png)
 ![Example: prayer-times faces, digital and analog](docs/images/prayer-faces.png)
 
+## How it works
+
+1. **It grills you first.** Say "make me a watch face". The agent then interviews you one
+   question at a time, in the style of Matt Pocock's
+   [grill-me](https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me) skill. It asks about your watch, style,
+   what you glance at, ranked data, colours, time format, on-watch settings, language and name.
+   Each question comes with its recommended answer, so you can just say "yes". It also pushes
+   back when something won't fit on the screen.
+2. **You approve a brief.** It writes `BRIEF.md` and waits for your "build it".
+3. **It builds and checks.** It compiles the face, screenshots it in the Garmin simulator, and
+   fixes the layout until it is clean.
+4. **It installs.** It copies the face to your watch over USB and verifies the copy.
+
 ## What you get
 
 - `skills/garmin-watchface/SKILL.md`: the step-by-step workflow the agent follows.
+- `references/interview.md`: the grill-me question tree and the brief template.
 - `scripts/`: helper scripts the agent runs.
+  - `doctor.sh`: checks Java, the SDK, your developer key and device profiles.
   - `device_info.py`: screen size, colours, fonts and memory for your watch.
   - `new_face.sh`: start a face from the template, with a fresh app id.
   - `build.sh`: compile the face for one watch.
@@ -74,14 +89,14 @@ cd garmin-watchface-skill
 
 Open your agent and ask, for example:
 
+> Make me a Garmin watch face.
+
+and answer its questions, or give it everything at once to shorten the interview:
+
 > Make me a Garmin watch face for my Forerunner 55: big time, date, steps and battery, with a
 > blue accent. Show me a simulator screenshot, then install it on my watch.
 
-The agent then:
-1. reads your watch's limits;
-2. starts from the template;
-3. builds and screenshots in a loop until the layout is clean;
-4. copies the face to your watch.
+Say "just build it" at any point and it fills the remaining gaps with its recommendations.
 
 On the watch: unplug, hold **UP** > **Watch Face** > pick your face. Options you add appear
 under the face's **Customize/Settings** entry on the watch.
@@ -90,6 +105,7 @@ You can also run the scripts yourself:
 
 ```bash
 S=skills/garmin-watchface/scripts
+$S/doctor.sh fr55
 $S/device_info.py --list
 $S/new_face.sh ~/myface "My Face" fr55
 $S/build.sh ~/myface fr55
