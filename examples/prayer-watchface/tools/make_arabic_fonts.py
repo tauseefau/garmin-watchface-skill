@@ -16,8 +16,8 @@ import arabic_reshaper
 TTF = sys.argv[1] if len(sys.argv) > 1 else str(Path(__file__).resolve().parent / "fonts" / "NotoSansArabic-Bold.ttf")
 OUT = Path(__file__).resolve().parent.parent / "resources" / "fonts"
 DIGITS = [chr(c) for c in range(0x0660, 0x066A)] + [":", " "]
-# Fajr, Dhuhr, Asr, Maghrib, Isha, then "time left"
-WORDS = ["الفجر", "الظهر", "العصر", "المغرب", "العشاء", "متبقي"]
+# Fajr, Dhuhr, Asr, Maghrib, Isha, "time left", sunrise, dhuha
+WORDS = ["الفجر", "الظهر", "العصر", "المغرب", "العشاء", "متبقي", "الشروق", "الضحى"]
 VISUAL = [arabic_reshaper.reshape(w) for w in WORDS]
 TEXT_CHARS = DIGITS + sorted(set("".join(VISUAL)))
 
@@ -88,6 +88,8 @@ src.write_text(
     "import Toybox.Lang;\n\nmodule ArabicText {\n"
     f"    const NAMES = [{names}] as Array<String>;\n"
     f'    const LEFT = "{VISUAL[5]}";\n'
+    f'    const SUNRISE = "{VISUAL[6]}";\n'
+    f'    const DHUHA = "{VISUAL[7]}";\n'
     "}\n"
 )
 print("wrote", src)

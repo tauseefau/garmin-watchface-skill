@@ -8,7 +8,7 @@ Two Connect IQ watch faces built from one codebase, made for the Garmin **Foreru
 
 | Face | Build file | Look |
 |---|---|---|
-| Prayer Times | `monkey.jungle` | Big two-colour clock, next prayer with countdown, timeline of the five prayers. |
+| Prayer Times | `monkey.jungle` | Big two-colour clock, next prayer with countdown (after Fajr: sunrise, then Dhuha at sunrise + 20 min), timeline of the five prayers. |
 | Prayer Classic | `monkey-analog.jungle` | Analog dress-watch dial with hands; the bezel arc shows time left in the current prayer. |
 
 ## Features
