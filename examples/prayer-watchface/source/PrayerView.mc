@@ -15,6 +15,8 @@ import Toybox.WatchUi;
 class PrayerView extends WatchUi.WatchFace {
 
     const IDX = [0, 2, 3, 4, 5] as Array<Number>;
+    // Dhuha starts once the sun is a spear's length up; ~20 min after sunrise is the common rule.
+    const DHUHA_AFTER_SUNRISE = 20;
     const LABEL = ["FAJR", "DHUHR", "ASR", "MAGHRIB", "ISHA"] as Array<String>;
     const DAYS = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"] as Array<String>;
     const MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN",
@@ -551,26 +553,40 @@ class PrayerView extends WatchUi.WatchFace {
             return;
         }
 
+        // Next event: after Fajr count down to sunrise, then to Dhuha (sunrise + 20 min), then Dhuhr.
+        var evt = LABEL[mIdx];
+        var evtAr = ArabicText.NAMES[mIdx];
+        var evtDiff = mDiff;
+        var evtColour = Graphics.COLOR_GREEN;
+        var sunrise = Math.round(mTimes[1] as Float).toNumber();
+        if (mIdx == 1 && mNow >= pMin(0) && mNow < sunrise + DHUHA_AFTER_SUNRISE) {
+            var sun = mNow < sunrise;
+            evt = sun ? "SUNRISE" : "DHUHA";
+            evtAr = sun ? ArabicText.SUNRISE : ArabicText.DHUHA;
+            evtDiff = sun ? sunrise - mNow : sunrise + DHUHA_AFTER_SUNRISE - mNow;
+            evtColour = Graphics.COLOR_ORANGE;
+        }
+
         // "DHUHR in 2h 14m", or Arabic "<name> متبقي h:mm" laid out right-to-left
         var J = Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER;
         if (mArabic) {
             var F = textFont();
             // logical order; the watch lays the Arabic run out right-to-left, digits end up on the left
-            var b = ArabicText.LEFT + " " + digits((mDiff / 60).format("%d") + ":" + (mDiff % 60).format("%02d"));
-            var a = ArabicText.NAMES[mIdx];
+            var b = ArabicText.LEFT + " " + digits((evtDiff / 60).format("%d") + ":" + (evtDiff % 60).format("%02d"));
+            var a = evtAr;
             var bw = dc.getTextWidthInPixels(b, F);
             var x0 = cx - (bw + 8 + dc.getTextWidthInPixels(a, F)) / 2;
             dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_TRANSPARENT);
             dc.drawText(x0, 115, F, b, J);
-            dc.setColor(Graphics.COLOR_GREEN, Graphics.COLOR_TRANSPARENT);
+            dc.setColor(evtColour, Graphics.COLOR_TRANSPARENT);
             dc.drawText(x0 + bw + 8, 115, F, a, J);
         } else {
             var F = Graphics.FONT_SMALL;
-            var a = LABEL[mIdx];
-            var b = "  in " + countdown(mDiff);
+            var a = evt;
+            var b = "  in " + countdown(evtDiff);
             var aw = dc.getTextWidthInPixels(a, F);
             var x0 = cx - (aw + dc.getTextWidthInPixels(b, F)) / 2;
-            dc.setColor(Graphics.COLOR_GREEN, Graphics.COLOR_TRANSPARENT);
+            dc.setColor(evtColour, Graphics.COLOR_TRANSPARENT);
             dc.drawText(x0, 115, F, a, J);
             dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_TRANSPARENT);
             dc.drawText(x0 + aw, 115, F, b, J);

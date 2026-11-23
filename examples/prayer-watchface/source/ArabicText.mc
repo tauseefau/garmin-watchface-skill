@@ -4,4 +4,6 @@ import Toybox.Lang;
 module ArabicText {
     const NAMES = ["ﺍﻟﻔﺠﺮ", "ﺍﻟﻈﻬﺮ", "ﺍﻟﻌﺼﺮ", "ﺍﻟﻤﻐﺮﺏ", "ﺍﻟﻌﺸﺎﺀ"] as Array<String>;
     const LEFT = "ﻣﺘﺒﻘﻲ";
+    const SUNRISE = "ﺍﻟﺸﺮﻭﻕ";
+    const DHUHA = "ﺍﻟﻀﺤﻰ";
 }
