@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- new_face.sh replaces the id and the product list. Keep the id unique per face:
+     two faces with the same id overwrite each other on the watch. -->
+<iq:manifest version="3" xmlns:iq="http://www.garmin.com/xml/connectiq">
+    <iq:application id="00000000-0000-0000-0000-000000000000" type="watchface"
+                    name="@Strings.AppName" entry="FaceApp"
+                    launcherIcon="@Drawables.LauncherIcon" minApiLevel="3.2.0">
+        <iq:products>
+            <iq:product id="fr55"/>
+        </iq:products>
+        <iq:permissions/>
+        <iq:languages>
+            <iq:language>eng</iq:language>
+        </iq:languages>
+        <iq:barrels/>
+    </iq:application>
+</iq:manifest>

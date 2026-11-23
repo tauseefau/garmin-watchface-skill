@@ -1,0 +1,5 @@
+<fonts>
+    <font id="ArBig" filename="ar_big.fnt" antialias="false"/>
+    <font id="ArSmall" filename="ar_small.fnt" antialias="false"/>
+    <font id="ArText" filename="ar_text.fnt" antialias="false"/>
+</fonts>

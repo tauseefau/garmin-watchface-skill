@@ -1,0 +1,38 @@
+<settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+
+    <setting propertyKey="@Properties.Latitude" title="@Strings.LatitudeTitle">
+        <settingConfig type="alphaNumeric" maxLength="16" />
+    </setting>
+
+    <setting propertyKey="@Properties.Longitude" title="@Strings.LongitudeTitle">
+        <settingConfig type="alphaNumeric" maxLength="16" />
+    </setting>
+
+    <setting propertyKey="@Properties.Method" title="@Strings.MethodTitle">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.Method0</listEntry>
+            <listEntry value="1">@Strings.Method1</listEntry>
+            <listEntry value="2">@Strings.Method2</listEntry>
+            <listEntry value="3">@Strings.Method3</listEntry>
+            <listEntry value="4">@Strings.Method4</listEntry>
+            <listEntry value="5">@Strings.Method5</listEntry>
+            <listEntry value="6">@Strings.Method6</listEntry>
+        </settingConfig>
+    </setting>
+
+    <setting propertyKey="@Properties.AsrFactor" title="@Strings.AsrFactorTitle">
+        <settingConfig type="list">
+            <listEntry value="1">@Strings.AsrShafi</listEntry>
+            <listEntry value="2">@Strings.AsrHanafi</listEntry>
+        </settingConfig>
+    </setting>
+
+    <setting propertyKey="@Properties.AdhanEnabled" title="@Strings.AdhanEnabledTitle">
+        <settingConfig type="boolean" />
+    </setting>
+
+    <setting propertyKey="@Properties.AdhanMinutes" title="@Strings.AdhanMinutesTitle">
+        <settingConfig type="numeric" min="1" max="15" />
+    </setting>
+
+</settings>

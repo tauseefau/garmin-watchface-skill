@@ -1,0 +1,3 @@
+project.manifest = manifest-analog.xml
+fr55.sourcePath = source/analog/Design.mc;source/PrayerApp.mc;source/PrayerCalc.mc;source/PrayerView.mc;source/PrayerDelegate.mc;source/ArabicText.mc
+fr55.resourcePath = resources-analog/strings.xml;resources/drawables/drawables.xml;resources/settings/settings.xml;resources/settings/properties.xml;resources/fonts/fonts.xml

@@ -1,0 +1,16 @@
+info face="ar_small" size=17 bold=1 italic=0 charset="" unicode=1 stretchH=100 smooth=0 aa=1 padding=0,0,0,0 spacing=0,0
+common lineHeight=15 base=13 scaleW=133 scaleH=13 pages=1 packed=0
+page id=0 file="ar_small.png"
+chars count=12
+char id=1632 x=0 y=0 width=10 height=8 xoffset=0 yoffset=5 xadvance=10 page=0 chnl=15
+char id=1633 x=12 y=0 width=10 height=12 xoffset=0 yoffset=1 xadvance=10 page=0 chnl=15
+char id=1634 x=24 y=0 width=10 height=12 xoffset=0 yoffset=1 xadvance=10 page=0 chnl=15
+char id=1635 x=36 y=0 width=10 height=12 xoffset=0 yoffset=1 xadvance=10 page=0 chnl=15
+char id=1636 x=48 y=0 width=10 height=12 xoffset=0 yoffset=1 xadvance=10 page=0 chnl=15
+char id=1637 x=60 y=0 width=10 height=9 xoffset=0 yoffset=4 xadvance=10 page=0 chnl=15
+char id=1638 x=72 y=0 width=10 height=13 xoffset=0 yoffset=1 xadvance=10 page=0 chnl=15
+char id=1639 x=84 y=0 width=10 height=13 xoffset=0 yoffset=1 xadvance=10 page=0 chnl=15
+char id=1640 x=96 y=0 width=10 height=13 xoffset=0 yoffset=1 xadvance=10 page=0 chnl=15
+char id=1641 x=108 y=0 width=10 height=12 xoffset=0 yoffset=1 xadvance=10 page=0 chnl=15
+char id=58 x=120 y=0 width=5 height=10 xoffset=0 yoffset=3 xadvance=5 page=0 chnl=15
+char id=32 x=127 y=0 width=4 height=1 xoffset=0 yoffset=13 xadvance=4 page=0 chnl=15

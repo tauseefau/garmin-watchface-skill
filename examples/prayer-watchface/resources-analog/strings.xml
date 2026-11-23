@@ -1,0 +1,23 @@
+<strings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+
+    <string id="AppName">Prayer Classic</string>
+
+    <string id="LatitudeTitle">Latitude (fallback)</string>
+    <string id="LongitudeTitle">Longitude (fallback)</string>
+    <string id="MethodTitle">Calculation Method</string>
+    <string id="AsrFactorTitle">Asr School</string>
+    <string id="AdhanEnabledTitle">Adhan alert on dial</string>
+    <string id="AdhanMinutesTitle">Adhan alert length (min)</string>
+
+    <string id="Method0">Muslim World League</string>
+    <string id="Method1">ISNA</string>
+    <string id="Method2">Egyptian</string>
+    <string id="Method3">Umm al-Qura</string>
+    <string id="Method4">Karachi</string>
+    <string id="Method5">Tehran</string>
+    <string id="Method6">Jafari</string>
+
+    <string id="AsrShafi">Standard (Shafi)</string>
+    <string id="AsrHanafi">Hanafi</string>
+
+</strings>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<iq:manifest version="3" xmlns:iq="http://www.garmin.com/xml/connectiq">
+    <iq:application id="a7146c23-d49d-4100-9758-1fd2fbd2beda" type="watchface"
+                    name="@Strings.AppName" entry="PrayerApp"
+                    launcherIcon="@Drawables.LauncherIcon" minApiLevel="3.3.0">
+        <iq:products>
+            <iq:product id="fr55"/>
+        </iq:products>
+        <iq:permissions/>
+        <iq:languages>
+            <iq:language>eng</iq:language>
+        </iq:languages>
+        <iq:barrels/>
+    </iq:application>
+</iq:manifest>

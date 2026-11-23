@@ -1,0 +1,17 @@
+<properties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+
+    <!-- Coordinates: Melbourne, Australia by default. Set your own in watch settings. -->
+    <property id="Latitude" type="string">-37.8136</property>
+    <property id="Longitude" type="string">144.9631</property>
+
+    <!-- 0=MWL, 1=ISNA, 2=Egyptian, 3=Umm al-Qura, 4=Karachi, 5=Tehran, 6=Jafari -->
+    <property id="Method" type="number">0</property>
+
+    <!-- 1 = Shafi (standard), 2 = Hanafi -->
+    <property id="AsrFactor" type="number">1</property>
+
+    <!-- Adhan alert on the dial -->
+    <property id="AdhanEnabled" type="boolean">true</property>
+    <property id="AdhanMinutes" type="number">5</property>
+
+</properties>

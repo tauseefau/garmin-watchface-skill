@@ -1,0 +1,5 @@
+# new_face.sh writes one sourcePath/resourcePath pair per target device below.
+# Device-qualified paths are used because "base." paths were ignored by SDK 9.x on Linux/WSL.
+project.manifest = manifest.xml
+fr55.sourcePath = source
+fr55.resourcePath = resources
